@@ -1,0 +1,31 @@
+{
+    "family": "jenkinsgouthamtask",
+    "containerDefinitions": [
+        {
+            "name": "jenkinsgouthamcontainer",
+            "image": "717904358179.dkr.ecr.us-east-2.amazonaws.com/jenkinsgouthamrepo:latest",
+            "cpu": 10,
+            "memory": 1024,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 0
+                }
+            ],
+			"environment": [
+			  {
+				"name": "CONSUL_SERVER_URL",
+				"value": "http://ec2-54-163-163-231.compute-1.amazonaws.com:8500"
+			  },
+			  {
+				"name": "BW_LOGLEVEL",
+				"value": "INFO"
+			  }
+			],
+
+            "essential": true
+        }
+    ],
+        "taskRoleArn": "arn:aws:iam::717904358179:role/bwce-demorole",
+    "networkMode": "bridge"
+}
